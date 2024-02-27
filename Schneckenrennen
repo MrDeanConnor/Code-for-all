@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SCHNECKENFELDER 30
+
+int Wuerfeln(){
+    return rand()%6+1;
+}
+int Farbwuerfeln(){
+    return rand()%3;
+}
+
+int schneckenziehen(int *position, int augenzahl){
+    *position+=augenzahl;
+    return *position;
+}
+
+int main(){
+srand(time(NULL));
+int positionRot=0, positionBlau=0, positionGruen=0;
+
+while (1)
+{
+    int zahl = Wuerfeln();
+    int farbe = Farbwuerfeln();
+
+    if (farbe==0)
+    {
+        if (schneckenziehen(&positionRot,zahl)>=SCHNECKENFELDER)
+        {
+            printf("Rot hat gewonnen");
+            break;
+        }
+        
+    }
+    else if (farbe==1)
+    {
+      if (schneckenziehen(&positionBlau,zahl)>=SCHNECKENFELDER)
+      {
+        printf("Blau hat gewonnen");
+        break;
+      }
+      
+    }
+    else{
+        if (schneckenziehen(&positionGruen,zahl)>=SCHNECKENFELDER)
+        {
+            printf("Guren hat gewonnen");
+            break;
+        }
+        
+    }
+    printf("Rot:%d|Blau%d|Gruen:%d\n",positionRot,positionBlau,positionGruen); 
+}
+return 0;
+}
