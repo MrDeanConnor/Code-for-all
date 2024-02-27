@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int main(){
+
+const int MIN = 1;
+const int MAX = 100;
+
+int guess;
+int guesses=0;
+int answer;
+
+//uses the current time as seed
+srand(time(0));
+
+//generate a random number between MIN and MAX
+answer = rand() % MAX + MIN;
+
+do{
+printf("Errate die Zahl\n");
+scanf("%d", &guess);
+if(guess>answer)
+{
+printf("Die Nummer ist zu Hoch!\n");
+}
+else if(guess<answer)
+{
+    printf("Die Nummer ist zu niedrig!\n");
+}
+else
+{
+    printf("Korrekt!\n");
+}
+guesses++;
+
+}while (guess !=answer);
+
+printf("*****************\n");
+printf("Antwort:%d\n",answer);
+printf("Versuche:%d\n", guesses);
+printf("*****************\n");
+
+return 0;
+}
